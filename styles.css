@@ -22,7 +22,7 @@
   --pixel: "Pixelify Sans", "Silkscreen", ui-monospace, monospace;
   --tagf: "Silkscreen", "Pixelify Sans", ui-monospace, monospace;
   --hud-h: 64px;
-  --build: quest2;
+  --build: quest3;
   color-scheme: dark;
 }
 
@@ -608,7 +608,7 @@ html.modal-open { overflow: hidden; }
 }
 @media (max-width: 900px) {
   .title-screen__grid { grid-template-columns: 1fr; gap: 40px; }
-  .player-card { justify-self: center; max-width: 360px; }
+  .player-card { justify-self: center; max-width: 360px; margin-top: 50px; }
   .quests { grid-template-columns: 1fr; }
   .inv__grid { grid-template-columns: 1fr 1fr; }
   .trophies { grid-template-columns: repeat(3, 1fr); }
