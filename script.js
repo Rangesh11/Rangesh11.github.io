@@ -33,6 +33,7 @@ const ACHIEVEMENTS = [
   { id: 'clear', ico: '🏁', name: 'Stage Clear', desc: 'Finished the Delivery Run' },
   { id: 'save', ico: '💾', name: 'Save Loaded', desc: 'Opened a save file' },
   { id: 'quest', ico: '📜', name: 'Quest Reader', desc: 'Opened a quest' },
+  { id: 'sync', ico: '⚡', name: 'Sync Master', desc: 'Scored 300+ in Sync Rush' },
   { id: 'collector', ico: '🎒', name: 'Collector', desc: 'Checked every inventory pocket' },
   { id: 'coin', ico: '🪙', name: 'Insert Coin', desc: 'Reached the Continue screen' },
 ];
@@ -60,6 +61,45 @@ $('#year').textContent = new Date().getFullYear();
     dispatchEvent(new Event('themechange'));
   });
 })();
+
+/* ---------- sound effects (made in the browser, off by default) ---------- */
+const SFX = (() => {
+  let on = store.get('sound') === 'on';
+  let ac = null;
+  const btn = $('#sound-btn');
+  const render = () => {
+    btn.textContent = on ? '🔊' : '🔇';
+    btn.setAttribute('aria-pressed', String(on));
+    btn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+  };
+  const tone = (f, d = 0.08, type = 'square', vol = 0.04, slide = 0) => {
+    if (!on) return;
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      const t = ac.currentTime, o = ac.createOscillator(), g = ac.createGain();
+      o.type = type; o.frequency.setValueAtTime(f, t);
+      if (slide) o.frequency.exponentialRampToValueAtTime(f * slide, t + d);
+      g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+      o.connect(g).connect(ac.destination); o.start(t); o.stop(t + d + 0.02);
+    } catch (e) { /* audio blocked: stay silent */ }
+  };
+  const seq = (notes, step = 0.07) => notes.forEach((n, i) => setTimeout(() => tone(n, step + 0.03), i * step * 1000));
+  const sounds = {
+    click: () => tone(660, 0.05),
+    hop: () => tone(300, 0.14, 'square', 0.035, 2.2),
+    coin: () => seq([988, 1319], 0.06),
+    fix: () => tone(880, 0.09, 'triangle', 0.06, 1.5),
+    bad: () => tone(170, 0.2, 'sawtooth', 0.04, 0.6),
+    ach: () => seq([523, 659, 784, 1047], 0.08),
+    clear: () => seq([523, 659, 784, 1047, 1319], 0.09),
+    start: () => seq([392, 523, 659], 0.07),
+    stage: () => seq([659, 880], 0.06),
+  };
+  btn.addEventListener('click', () => { on = !on; store.set('sound', on ? 'on' : 'off'); render(); if (on) sounds.coin(); });
+  render();
+  return { play: (n) => { if (sounds[n]) sounds[n](); } };
+})();
+window.SFX = SFX;
 
 /* ---------- achievements ---------- */
 const Ach = (() => {
@@ -95,6 +135,7 @@ const Ach = (() => {
     render();
     btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
     toast(a.ico, 'ACHIEVEMENT UNLOCKED', a.name, a.desc);
+    SFX.play('ach');
     if (got.size === ACHIEVEMENTS.length) {
       setTimeout(() => toast('👑', '100% COMPLETE', 'You saw it all!', 'Thanks for playing. Ready to hire player 1?'), 1200);
     }
@@ -115,7 +156,7 @@ const Ach = (() => {
   return { unlock, toast };
 })();
 
-$('#press-start').addEventListener('click', () => Ach.unlock('start'));
+$('#press-start').addEventListener('click', () => { SFX.play('start'); Ach.unlock('start'); });
 
 /* ---------- HUD: XP bar, stage label, active link, menu ---------- */
 (() => {
@@ -125,6 +166,17 @@ $('#press-start').addEventListener('click', () => Ach.unlock('start'));
   const burger = $('#burger');
   const links = $$('a', nav);
   const stages = $$('[data-stage]');
+  const banner = $('#stage-banner');
+  const seenStages = new Set(['start']);
+  let bannerT = 0;
+  const showBanner = (el) => {
+    if (seenStages.has(el.id)) return;
+    seenStages.add(el.id);
+    banner.textContent = `STAGE ${el.dataset.stage}`;
+    banner.classList.remove('is-on'); void banner.offsetWidth; banner.classList.add('is-on');
+    clearTimeout(bannerT); bannerT = setTimeout(() => banner.classList.remove('is-on'), 1600);
+    SFX.play('stage');
+  };
 
   const onScroll = () => {
     const h = document.documentElement;
@@ -138,6 +190,7 @@ $('#press-start').addEventListener('click', () => Ach.unlock('start'));
     entries.forEach((en) => {
       if (!en.isIntersecting) return;
       stageLabel.textContent = `STAGE ${en.target.dataset.stage}`;
+      showBanner(en.target);
       links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === `#${en.target.id}`));
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
