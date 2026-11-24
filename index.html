@@ -81,6 +81,7 @@
             <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> Project Implementation Engineer @ Facilio</li>
             <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> B.E. CSE · CGPA 8.49</li>
           </ul>
+          <div class="hero__socials intro" style="--d:6" data-socials="labeled"></div>
         </div>
 
         <div class="hero__visual intro" style="--d:2">
@@ -193,7 +194,7 @@
 
           <article class="t-item reveal">
             <div class="t-item__dot"></div>
-            <div class="t-item__card glass">
+            <div class="t-item__card glass" data-detail="facilio">
               <div class="t-item__top">
                 <div>
                   <h3>Project Implementation Engineer</h3>
@@ -209,12 +210,13 @@
               <div class="tags">
                 <span>FacilioScript</span><span>Facilio Platform</span><span>FSM</span><span>BRD</span><span>Client Delivery</span>
               </div>
+              <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
             </div>
           </article>
 
           <article class="t-item reveal">
             <div class="t-item__dot"></div>
-            <div class="t-item__card glass">
+            <div class="t-item__card glass" data-detail="thisux">
               <div class="t-item__top">
                 <div>
                   <h3>Web Developer Intern</h3>
@@ -229,6 +231,7 @@
               <div class="tags">
                 <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
               </div>
+              <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
             </div>
           </article>
         </div>
@@ -288,7 +291,7 @@
         </div>
 
         <div class="projects">
-          <article class="project spotlight reveal" data-tilt>
+          <article class="project spotlight reveal" data-tilt data-detail="xero">
             <div class="project__head">
               <span class="project__num mono">01</span>
               <span class="project__year mono">2026</span>
@@ -312,9 +315,10 @@
             <div class="tags">
               <span>FacilioScript</span><span>Xero REST API</span><span>OAuth 2.0</span>
             </div>
+            <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
           </article>
 
-          <article class="project spotlight reveal" data-tilt>
+          <article class="project spotlight reveal" data-tilt data-detail="vanji">
             <div class="project__head">
               <span class="project__num mono">02</span>
               <span class="project__year mono">2026</span>
@@ -338,9 +342,10 @@
             <div class="tags">
               <span>Go</span><span>Airbyte</span><span>Docker</span><span>REST API</span><span>ETL</span>
             </div>
+            <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
           </article>
 
-          <article class="project spotlight reveal" data-tilt>
+          <article class="project spotlight reveal" data-tilt data-detail="fsm">
             <div class="project__head">
               <span class="project__num mono">03</span>
               <span class="project__year mono">2026</span>
@@ -361,9 +366,10 @@
             <div class="tags">
               <span>FacilioScript</span><span>Vue.js</span><span>Claude Automation</span>
             </div>
+            <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
           </article>
 
-          <article class="project spotlight reveal" data-tilt>
+          <article class="project spotlight reveal" data-tilt data-detail="connect">
             <div class="project__head">
               <span class="project__num mono">04</span>
               <span class="project__year mono">2024</span>
@@ -390,6 +396,7 @@
             <div class="tags">
               <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
             </div>
+            <button class="more" type="button">View full details <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
           </article>
         </div>
       </div>
@@ -555,11 +562,265 @@
             <span class="mono">rangesh.s2022cse@sece.ac.in</span>
             <span class="copy-email__hint" id="copy-hint">Click to copy</span>
           </button>
-          <div class="socials" id="socials"></div>
+          <div class="socials" id="socials" data-socials></div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- DETAIL POP-UP (filled from the templates below when a card is clicked) -->
+  <dialog class="modal" id="detail" aria-labelledby="modal-title">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close details">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal__body"></div>
+    </div>
+  </dialog>
+
+  <template id="d-xero">
+    <header class="md-head">
+      <span class="md-kicker mono">Project 01 · 2026 · Facilio</span>
+      <h2>Xero ↔ Facilio Integration</h2>
+      <p class="md-lead">A two-way (bidirectional) sync between Xero and the Facilio platform, so financial and operational records stay consistent in both systems.</p>
+      <div class="md-facts">
+        <div><span>Role</span><strong>Sole owner</strong></div>
+        <div><span>Type</span><strong>Client integration</strong></div>
+        <div><span>Scope</span><strong>Requirements → delivery</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>The goal</h3>
+      <p>The client's financial records live in Xero and their operations run on Facilio. The integration keeps both sides in step, so the same records don't have to be maintained by hand in two places.</p>
+    </section>
+    <section class="md-sec">
+      <h3>How the sync works</h3>
+      <ol class="md-flow">
+        <li><b>Authenticate</b><span>OAuth 2.0 connection to Xero's REST API</span></li>
+        <li><b>Map fields</b><span>Each Xero field matched to its Facilio field</span></li>
+        <li><b>Transform</b><span>Data reshaped so each system gets its own format</span></li>
+        <li><b>Sync</b><span>Scheduled runs plus event-driven updates, both directions</span></li>
+        <li><b>Handle errors</b><span>Failed and duplicate records caught and handled</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>What I did</h3>
+      <ul class="ticks">
+        <li>Built the <strong>bidirectional sync</strong> with field mapping and data transformation, so financial and operational records stay consistent in both systems.</li>
+        <li>Implemented it with <strong>FacilioScript and Xero's REST API</strong>, including authentication, scheduled and event-driven sync, and error handling for failed or duplicate records.</li>
+        <li>Owned the project <strong>single-handedly</strong>: requirement gathering with the client, solution design, build, testing and delivery.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Tech stack</h3>
+      <div class="tags"><span>Facilio Platform</span><span>FacilioScript</span><span>Xero REST API</span><span>OAuth 2.0</span></div>
+    </section>
+    <section class="md-sec md-outcome">
+      <h3>Outcome</h3>
+      <p>Delivered to the client: Xero and Facilio now hold the same financial and operational data, kept in sync automatically.</p>
+    </section>
+  </template>
+
+  <template id="d-vanji">
+    <header class="md-head">
+      <span class="md-kicker mono">Project 02 · 2026 · Vanji</span>
+      <h2>ETL Platform for Vanji</h2>
+      <p class="md-lead">A full Airbyte-style ETL feature for the Vanji platform. Users configure and run data pipelines from the Vanji UI without ever touching Airbyte directly.</p>
+      <div class="md-facts">
+        <div><span>Role</span><strong>Built end to end</strong></div>
+        <div><span>Type</span><strong>Product feature</strong></div>
+        <div><span>Backend</span><strong>Go + Airbyte</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>Architecture</h3>
+      <ol class="md-flow">
+        <li><b>Vanji UI</b><span>Where users set up and run their pipelines</span></li>
+        <li><b>Go wrapper service</b><span>Vanji's own REST API, written in Go</span></li>
+        <li><b>Airbyte</b><span>Runs from its Docker image on a dedicated server</span></li>
+        <li><b>Destination</b><span>Where the synced data is loaded</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>What a user does</h3>
+      <div class="md-chips"><span>Connect source</span><i>→</i><span>Define streams</span><i>→</i><span>Sync</span><i>→</i><span>Load to destination</span></div>
+    </section>
+    <section class="md-sec">
+      <h3>What I did</h3>
+      <ul class="ticks">
+        <li>Ran <strong>Airbyte from its Docker image</strong> on a dedicated server, with a <strong>Go backend wrapper</strong> on top so users never deal with Airbyte directly.</li>
+        <li>Customized the workflow for Vanji's use cases: <strong>source and destination connectors, connection setup, sync scheduling and run monitoring</strong>, all driven through the Go service's REST API.</li>
+        <li>Delivered the <strong>complete flow end to end</strong>: connect source, define streams, sync, load to destination.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Tech stack</h3>
+      <div class="tags"><span>Go</span><span>Airbyte (Docker)</span><span>REST API wrapper</span><span>Docker</span><span>Server deployment</span><span>ETL pipelines</span></div>
+    </section>
+    <section class="md-sec md-outcome">
+      <h3>Outcome</h3>
+      <p>Vanji now offers self-service data pipelines as a product feature.</p>
+    </section>
+  </template>
+
+  <template id="d-fsm">
+    <header class="md-head">
+      <span class="md-kicker mono">Project 03 · 2026 · Facilio</span>
+      <h2>FSM App Customization</h2>
+      <p class="md-lead">Customized Facilio's Field Service Management (FSM) application into a client-centric solution, delivered phase by phase.</p>
+      <div class="md-facts">
+        <div><span>Role</span><strong>Sole owner</strong></div>
+        <div><span>Duration</span><strong>Last 8 months</strong></div>
+        <div><span>Status</span><strong>All phases done</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>How it was delivered</h3>
+      <ol class="md-flow">
+        <li><b>Analyse</b><span>Studied the client's needs and workflow</span></li>
+        <li><b>Document</b><span>Wrote the BRD and solution documents</span></li>
+        <li><b>Build logic</b><span>Business logic and automation in FacilioScript</span></li>
+        <li><b>Build UI</b><span>Views and widgets tailored in Vue.js</span></li>
+        <li><b>Deliver</b><span>Shipped phase by phase until every phase was complete</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>What I did</h3>
+      <ul class="ticks">
+        <li>Analysed the client's needs, then wrote the <strong>BRD and solution documents</strong>.</li>
+        <li>Built <strong>custom business logic and automation</strong> with FacilioScript.</li>
+        <li>Tailored the <strong>user-facing views and widgets with Vue.js</strong> to match the client's workflow.</li>
+        <li><strong>Sole owner for the last 8 months</strong>, including all client communication and handling.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Tech stack</h3>
+      <div class="tags"><span>Facilio Platform</span><span>FacilioScript</span><span>Vue.js</span><span>Claude Automation</span></div>
+    </section>
+    <section class="md-sec md-outcome">
+      <h3>Outcome</h3>
+      <p>Every phase completed successfully and handed over to the client.</p>
+    </section>
+  </template>
+
+  <template id="d-connect">
+    <header class="md-head">
+      <span class="md-kicker mono">Project 04 · 2024 · ThisUX internship</span>
+      <h2>Connect — Campus Social Platform</h2>
+      <p class="md-lead">A MERN-based social media platform for seamless interaction among students, alumni and faculty, built during my internship at ThisUX.</p>
+      <div class="md-facts">
+        <div><span>Role</span><strong>Web Developer Intern</strong></div>
+        <div><span>Company</span><strong>ThisUX</strong></div>
+        <div><span>Stack</span><strong>MERN</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>Who it's for</h3>
+      <div class="md-chips"><span>Students</span><span>Alumni</span><span>Faculty</span></div>
+    </section>
+    <section class="md-sec">
+      <h3>How it's built</h3>
+      <ol class="md-flow">
+        <li><b>React</b><span>Dynamic, responsive user interface</span></li>
+        <li><b>Node + Express</b><span>Backend APIs</span></li>
+        <li><b>MongoDB</b><span>Database, optimized for the app's queries</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>What I did</h3>
+      <ul class="ticks">
+        <li><strong>Designed and developed</strong> Connect for students, alumni and faculty.</li>
+        <li>Worked on <strong>dynamic UI design</strong>, <strong>backend APIs</strong> and <strong>database optimization</strong>.</li>
+        <li>Delivered a <strong>responsive, user-centric</strong> solution in line with ThisUX's focus on innovative digital experiences.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Tech stack</h3>
+      <div class="tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+    </section>
+  </template>
+
+  <template id="d-facilio">
+    <header class="md-head">
+      <span class="md-kicker mono">Experience · 2026 — Present</span>
+      <h2>Project Implementation Engineer</h2>
+      <p class="md-lead">At Facilio I own client engagements end to end: from the first requirement call to go-live support, building Field Service Management (FSM) solutions on the Facilio platform.</p>
+      <div class="md-facts">
+        <div><span>Company</span><strong>Facilio</strong></div>
+        <div><span>Since</span><strong>2026 · Current</strong></div>
+        <div><span>Focus</span><strong>FSM on Facilio</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>The delivery lifecycle I own</h3>
+      <ol class="md-flow">
+        <li><b>Requirements</b><span>Gathering needs directly with the client</span></li>
+        <li><b>Solution design</b><span>BRD and solution documents</span></li>
+        <li><b>Configuration</b><span>Setting up the Facilio platform</span></li>
+        <li><b>Development</b><span>FacilioScript, module by module</span></li>
+        <li><b>Testing</b><span>Validating every flow</span></li>
+        <li><b>Go-live</b><span>Client handover and go-live support</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>Highlights</h3>
+      <ul class="ticks">
+        <li>Built an <strong>end-to-end SaaS application</strong> on the Facilio platform for Field Service Management, owning the engagement from client requirements through to go-live.</li>
+        <li>Handled the <strong>full delivery lifecycle independently</strong>: requirement gathering, solution design, configuration, FacilioScript development, testing, client handover and go-live support.</li>
+        <li>Designed and built the application layer <strong>module by module</strong>, tailoring each part of the FSM solution to the client's workflow.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Projects from this role</h3>
+      <div class="md-related">
+        <button type="button" data-open="xero"><span>Xero ↔ Facilio Integration</span><i>→</i></button>
+        <button type="button" data-open="fsm"><span>FSM App Customization</span><i>→</i></button>
+      </div>
+    </section>
+    <section class="md-sec">
+      <h3>Skills used</h3>
+      <div class="tags"><span>FacilioScript</span><span>Facilio Platform (FSM, Connected Apps)</span><span>Vue.js</span><span>Client handling</span><span>BRD &amp; solution documents</span><span>Xero integration</span></div>
+    </section>
+  </template>
+
+  <template id="d-thisux">
+    <header class="md-head">
+      <span class="md-kicker mono">Internship · 2024</span>
+      <h2>Web Developer Intern</h2>
+      <p class="md-lead">At ThisUX I designed and developed “Connect”, a MERN-based social media platform for students, alumni and faculty.</p>
+      <div class="md-facts">
+        <div><span>Company</span><strong>ThisUX</strong></div>
+        <div><span>Year</span><strong>2024</strong></div>
+        <div><span>Type</span><strong>Internship</strong></div>
+      </div>
+    </header>
+    <section class="md-sec">
+      <h3>What I worked on</h3>
+      <ol class="md-flow">
+        <li><b>UI design</b><span>Dynamic, responsive interface in React</span></li>
+        <li><b>Backend APIs</b><span>Node.js and Express services</span></li>
+        <li><b>Database</b><span>MongoDB design and optimization</span></li>
+      </ol>
+    </section>
+    <section class="md-sec">
+      <h3>Highlights</h3>
+      <ul class="ticks">
+        <li>Designed and developed <strong>“Connect”</strong>, giving students, alumni and faculty one place to interact.</li>
+        <li>Applied <strong>dynamic UI design, backend APIs and database optimization</strong> to deliver a responsive, user-centric product.</li>
+        <li>Aligned the work with <strong>ThisUX's commitment to innovative digital experiences</strong>.</li>
+      </ul>
+    </section>
+    <section class="md-sec">
+      <h3>Project from this internship</h3>
+      <div class="md-related">
+        <button type="button" data-open="connect"><span>Connect — Campus Social Platform</span><i>→</i></button>
+      </div>
+    </section>
+    <section class="md-sec">
+      <h3>Tech stack</h3>
+      <div class="tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+    </section>
+  </template>
 
   <footer class="footer">
     <div class="container footer__inner">
