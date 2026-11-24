@@ -449,3 +449,38 @@ $('#press-start').addEventListener('click', () => Ach.unlock('start'));
     }
   });
 })();
+
+/* ---------- 3D: tilt the player card, quest cards and save files toward the pointer ---------- */
+(() => {
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  if (!fine || reduceMotion) return;
+  const tilt = (el, max, extra = '') => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      el.classList.add('is-tilting'); el.classList.remove('is-resetting');
+      el.style.transform = `perspective(900px) rotateY(${(x * max).toFixed(2)}deg) rotateX(${(-y * max).toFixed(2)}deg) ${extra}`;
+    });
+    el.addEventListener('pointerleave', () => {
+      el.classList.remove('is-tilting'); el.classList.add('is-resetting');
+      el.style.transform = '';
+      setTimeout(() => el.classList.remove('is-resetting'), 500);
+    });
+  };
+  const card = $('.player-card');
+  if (card) tilt(card, 22);
+  $$('.quest').forEach((q) => tilt(q, 10, 'translateZ(10px)'));
+  $$('.save').forEach((s) => tilt(s, 5, 'translateZ(6px)'));
+})();
+
+/* ---------- 3D: flip trophies on tap (touch screens) and with Enter/Space ---------- */
+$$('.trophy').forEach((t) => {
+  t.addEventListener('click', () => t.classList.toggle('is-flipped'));
+  t.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.classList.toggle('is-flipped'); }
+  });
+});
+
+/* ---------- tidy the address bar after a fresh-files reload ---------- */
+if (location.search.includes('fresh=')) history.replaceState(null, '', location.pathname + location.hash);

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=quest1" />
+  <link rel="stylesheet" href="styles.css?v=quest2" />
   <script>
     // Apply the saved theme before first paint so there is no flash.
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -78,6 +78,16 @@
         </div>
 
         <aside class="player-card" aria-label="Player card">
+          <div class="cube-wrap" aria-hidden="true">
+            <div class="cube">
+              <span class="cube__f cube__f--1">FACILIO<br>SCRIPT</span>
+              <span class="cube__f cube__f--2">GO</span>
+              <span class="cube__f cube__f--3">VUE.JS</span>
+              <span class="cube__f cube__f--4">XERO</span>
+              <span class="cube__f cube__f--5">AIR<br>BYTE</span>
+              <span class="cube__f cube__f--6">DOCKER</span>
+            </div>
+          </div>
           <div class="player-card__top"><span>PLAYER 1</span><span class="ready">● READY</span></div>
           <div class="player-card__photo">
             <img src="assets/profile.jpg" alt="Portrait of Rangesh S" width="900" height="1170" />
@@ -301,13 +311,14 @@
         <header class="stage__head">
           <span class="tag">TROPHY ROOM · AWARDS</span>
           <h2 class="stage__title">Trophies <span class="hl">unlocked</span></h2>
+          <p class="stage__sub">Hover or tap a trophy to flip it.</p>
         </header>
         <div class="trophies">
-          <article class="trophy trophy--gold"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Project Expo</h3><p>1st place · Fiesta '24</p></article>
-          <article class="trophy trophy--gold"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Paper Presentation</h3><p>1st place · Fiesta '24</p></article>
-          <article class="trophy trophy--gold"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Project Expo</h3><p>1st place · Oracal 2023</p></article>
-          <article class="trophy trophy--bronze"><span class="trophy__rarity">RARE</span><span class="trophy__icon" aria-hidden="true">🥉</span><h3>Java DBMS Sprint Week</h3><p>3rd place · SECE 2023</p></article>
-          <article class="trophy trophy--epic"><span class="trophy__rarity">EPIC</span><span class="trophy__icon" aria-hidden="true">⚔</span><h3>LeetCode</h3><p>1650+ rating · 350+ solved</p></article>
+          <article class="trophy trophy--gold" tabindex="0"><div class="trophy__inner"><div class="trophy__face trophy__front"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Project Expo</h3><p>1st place · Fiesta '24</p></div><div class="trophy__face trophy__back" aria-hidden="true"><span class="trophy__year">2024</span><b>WINNER</b><p>First place at the Fiesta '24 Project Expo.</p></div></div></article>
+          <article class="trophy trophy--gold" tabindex="0"><div class="trophy__inner"><div class="trophy__face trophy__front"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Paper Presentation</h3><p>1st place · Fiesta '24</p></div><div class="trophy__face trophy__back" aria-hidden="true"><span class="trophy__year">2024</span><b>WINNER</b><p>First place in the Fiesta '24 paper presentation.</p></div></div></article>
+          <article class="trophy trophy--gold" tabindex="0"><div class="trophy__inner"><div class="trophy__face trophy__front"><span class="trophy__rarity">LEGENDARY</span><span class="trophy__icon" aria-hidden="true">🏆</span><h3>Project Expo</h3><p>1st place · Oracal 2023</p></div><div class="trophy__face trophy__back" aria-hidden="true"><span class="trophy__year">2023</span><b>WINNER</b><p>First place at the Oracal Project Expo.</p></div></div></article>
+          <article class="trophy trophy--bronze" tabindex="0"><div class="trophy__inner"><div class="trophy__face trophy__front"><span class="trophy__rarity">RARE</span><span class="trophy__icon" aria-hidden="true">🥉</span><h3>Java DBMS Sprint Week</h3><p>3rd place · SECE 2023</p></div><div class="trophy__face trophy__back" aria-hidden="true"><span class="trophy__year">2023</span><b>PODIUM</b><p>Third place in the Java DBMS Sprint Week at SECE.</p></div></div></article>
+          <article class="trophy trophy--epic" tabindex="0"><div class="trophy__inner"><div class="trophy__face trophy__front"><span class="trophy__rarity">EPIC</span><span class="trophy__icon" aria-hidden="true">⚔</span><h3>LeetCode</h3><p>1650+ rating · 350+ solved</p></div><div class="trophy__face trophy__back" aria-hidden="true"><span class="trophy__year">DSA</span><b>PROBLEM SOLVER</b><p>Max rating 1650+, with 350+ problems solved.</p></div></div></article>
         </div>
 
         <div class="split">
@@ -623,6 +634,18 @@
     </div>
   </footer>
 
-  <script src="script.js?v=quest1"></script>
+  <script>
+    // If the browser mixed an old cached stylesheet with this page, reload once with fresh files.
+    window.addEventListener('load', function () {
+      var ok = getComputedStyle(document.documentElement).getPropertyValue('--build').trim() === 'quest2';
+      var tried = false;
+      try { tried = sessionStorage.getItem('fresh') === 'quest2'; } catch (e) {}
+      if (!ok && !tried) {
+        try { sessionStorage.setItem('fresh', 'quest2'); } catch (e) {}
+        location.replace(location.pathname + '?fresh=' + Date.now() + location.hash);
+      }
+    });
+  </script>
+  <script src="script.js?v=quest2"></script>
 </body>
 </html>
