@@ -11,6 +11,7 @@ const LINKS = {
 
 const ROLES = [
   'Implementation Engineer',
+  'End-to-End Project Owner',
   'Integration Engineer',
   'Full-Stack Developer',
   'LeetCode 1650+',
