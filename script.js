@@ -4,7 +4,7 @@
 
 // ---- Edit these to show social links in the hero and Contact section ----
 const LINKS = {
-  linkedin: '', // e.g. 'https://www.linkedin.com/in/your-handle'
+  linkedin: 'https://www.linkedin.com/in/rangesh-s-763890259/',
   github: 'https://github.com/Rangesh11',
   leetcode: '', // e.g. 'https://leetcode.com/u/your-handle'
 };
