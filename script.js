@@ -10,11 +10,10 @@ const LINKS = {
 };
 
 const ROLES = [
-  'Project Implementation Engineer',
-  'Integration & ETL Engineer',
+  'Implementation Engineer',
+  'Integration Engineer',
   'Full-Stack Developer',
-  'End-to-End Project Owner',
-  'Problem Solver · LeetCode 1650+',
+  'LeetCode 1650+',
 ];
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
