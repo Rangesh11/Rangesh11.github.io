@@ -266,6 +266,7 @@ $('#press-start').addEventListener('click', () => Ach.unlock('start'));
     cur = i;
     lvls.forEach((l, k) => { l.classList.toggle('is-current', k === cur); l.classList.toggle('is-done', k < cur); });
     map.style.setProperty('--progress', cur / (LEVELS.length - 1));
+    document.dispatchEvent(new CustomEvent('levelchange', { detail: { index: cur, animate } }));
     nameEl.textContent = LEVELS[cur].name;
     typeText(LEVELS[cur].text);
     if (moved && animate && !reduceMotion) {
@@ -294,6 +295,8 @@ $('#press-start').addEventListener('click', () => Ach.unlock('start'));
   $('#lvl-prev').addEventListener('click', () => { stop(); go(cur - 1); });
   $('#lvl-next').addEventListener('click', () => { stop(); go(cur + 1); });
   playBtn.addEventListener('click', play);
+  window.goLevel = (k) => { stop(); go(k); };
+  window.currentLevel = () => cur;
   lvls.forEach((l, k) => l.addEventListener('click', () => { stop(); go(k); }));
   map.addEventListener('keydown', (e) => {
     if (['ArrowRight', 'ArrowDown'].includes(e.key)) { e.preventDefault(); stop(); go(cur + 1); }
