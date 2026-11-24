@@ -14,7 +14,7 @@
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true });
   } catch (e) { return; }
   if (!renderer.getContext()) return;
 
@@ -22,11 +22,15 @@
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.85;
   host.appendChild(renderer.domElement);
   map.classList.add('map--3d');
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(32, 2, 0.1, 200);
+  scene.environment = window.RS3D.envFor(renderer);
+  const fx = window.RS3D.composerFor(renderer, scene, camera, { strength: 0.4, radius: 0.35, threshold: 0.88 });
 
   /* ---------- theme colours ---------- */
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -40,11 +44,13 @@
     };
   };
   readTheme();
+  const applyBg = () => { scene.background = C.panel.clone(); if (fx.bloom) fx.bloom.strength = window.RS3D.isLight() ? 0.2 : 0.4; };
+  applyBg();
 
   /* ---------- lights ---------- */
-  const hemi = new THREE.HemisphereLight(0xcfc6ff, 0x1a1530, 0.85);
+  const hemi = new THREE.HemisphereLight(0xcfc6ff, 0x1a1530, 0.45);
   scene.add(hemi);
-  const sun = new THREE.DirectionalLight(0xffffff, 0.95);
+  const sun = new THREE.DirectionalLight(0xfff4e6, 0.9);
   sun.position.set(-6, 14, 9);
   sun.castShadow = true;
   sun.shadow.mapSize.set(1024, 1024);
@@ -96,7 +102,7 @@
   scene.add(world);
   for (let i = 0; i < 5; i++) {
     const g = new THREE.Group();
-    const top = outline(box(2.4, 0.42, 2.4, std(0x2b2550)));
+    const top = window.RS3D.rbox(2.4, 0.42, 2.4, std(0x2b2550, { roughness: 0.6, metalness: 0.1, envMapIntensity: 0.5 }), 0.14);
     top.position.y = 0;
     const soil = box(2.05, 0.7, 2.05, std(0x3a2a22, { roughness: 0.95 }));
     soil.position.y = -0.56;
@@ -197,6 +203,7 @@
   const frame = () => {
     const w = host.clientWidth, h = host.clientHeight;
     renderer.setSize(w, h, false);
+    fx.setSize(w, h);
     camera.aspect = w / h;
     const wide = w / h > 1.25;
     if (wide !== layoutWide) layout(wide);
@@ -228,7 +235,7 @@
       const done = i < cur, now = i === cur, goal = i === 4;
       const c = now ? (goal ? C.green : C.yellow) : done ? C.purple : new THREE.Color(0x2b2550);
       g.userData.top.material.color.copy(c);
-      g.userData.top.material.emissive = now ? c.clone().multiplyScalar(0.18) : new THREE.Color(0);
+      g.userData.top.material.emissive = now ? c.clone().multiplyScalar(0.06) : new THREE.Color(0);
       const fg = now ? '#0a0816' : '#ffffff';
       const bg = now ? '#' + (goal ? C.green : C.yellow).getHexString() : done ? '#' + C.purple.getHexString() : '#2b2550';
       const tex = labelTexture(done ? '✓' : ICONS[i], fg, bg);
@@ -325,7 +332,7 @@
     ring.material.color.copy(cur === 4 ? C.green : C.yellow);
 
     placeCamera();
-    renderer.render(scene, camera);
+    fx.render();
 
     // HTML labels follow their islands
     const w = host.clientWidth, h = host.clientHeight;
@@ -345,7 +352,7 @@
   paint();
   new IntersectionObserver((en) => { visible = en[0].isIntersecting; if (visible) { last = performance.now(); kick(); } }, { threshold: 0.05 }).observe(host);
   addEventListener('resize', () => { frame(); heroPos.copy(moveT >= 1 ? standOn(cur) : heroPos); kick(); });
-  addEventListener('themechange', () => { readTheme(); paint(); kick(); });
+  addEventListener('themechange', () => { readTheme(); applyBg(); paint(); kick(); });
   if (document.fonts) document.fonts.ready.then(() => { paint(); kick(); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) { last = performance.now(); kick(); } });
   kick();
