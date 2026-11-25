@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=quest8" />
+  <link rel="stylesheet" href="styles.css?v=quest10" />
   <script>
     // Apply the saved theme before first paint so there is no flash.
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -83,6 +83,7 @@
           <p class="lead"><strong class="hl">One owner. End to end.</strong> I take client projects from the first call to go-live — integrations, data pipelines, full-stack apps.</p>
           <div class="cta-row">
             <a href="#run" class="pbtn pbtn--start" id="press-start">▶ PRESS START</a>
+            <button type="button" class="pbtn pbtn--video" data-intro>🎬 WATCH MY 1-MIN INTRO</button>
             <a href="assets/Rangesh_S_Resume.pdf" class="pbtn pbtn--ghost" download>⤓ RÉSUMÉ.PDF</a>
           </div>
           <div class="socials-row" data-socials="labeled"></div>
@@ -92,6 +93,7 @@
           <div class="player-card__top"><span>PLAYER 1</span><span class="ready">● READY</span></div>
           <div class="player-card__photo">
             <img src="assets/profile.jpg" alt="Portrait of Rangesh S" width="900" height="1170" />
+            <button type="button" class="photo-play" data-intro aria-label="Watch Rangesh's 1-minute animated intro"><span>▶</span> 1-MIN INTRO</button>
           </div>
           <dl class="player-card__info">
             <div><dt>CLASS</dt><dd>Implementation Engineer</dd></div>
@@ -661,6 +663,30 @@
     </section>
   </template>
 
+  <!-- 1-MINUTE ANIMATED INTRO -->
+  <dialog class="cinema" id="cinema" aria-label="Animated 1-minute intro about Rangesh">
+    <div class="cinema__frame">
+      <div class="cinema__stage" id="cin-stage">
+        <div class="cinema__chapter" id="cin-chapter"></div>
+        <div class="cinema__title" id="cin-title"></div>
+        <p class="cinema__cc" id="cin-cc" aria-live="polite"></p>
+        <div class="cinema__cta" id="cin-cta" hidden>
+          <a class="pbtn pbtn--start" href="mailto:rangesh.s2022cse@sece.ac.in">✉ EMAIL ME</a>
+          <a class="pbtn pbtn--ghost" href="assets/Rangesh_S_Resume.pdf" download>⤓ RÉSUMÉ</a>
+        </div>
+        <button type="button" class="cinema__big" id="cin-big" aria-label="Play" hidden>▶</button>
+      </div>
+      <div class="cinema__bar">
+        <button type="button" id="cin-play" aria-label="Pause">❚❚</button>
+        <div class="cinema__progress" id="cin-progress"></div>
+        <span class="cinema__time" id="cin-time">0:00</span>
+        <button type="button" id="cin-voice" aria-pressed="true">🔊 VOICE</button>
+        <button type="button" id="cin-cc-btn" aria-pressed="true">CC</button>
+        <button type="button" id="cin-close" aria-label="Close intro">✕</button>
+      </div>
+    </div>
+  </dialog>
+
   <div class="toasts" id="toasts" aria-live="polite"></div>
 
   <footer class="footer">
@@ -673,11 +699,11 @@
   <script>
     // If the browser mixed an old cached stylesheet with this page, reload once with fresh files.
     window.addEventListener('load', function () {
-      var ok = getComputedStyle(document.documentElement).getPropertyValue('--build').trim() === 'quest8';
+      var ok = getComputedStyle(document.documentElement).getPropertyValue('--build').trim() === 'quest10';
       var tried = false;
-      try { tried = sessionStorage.getItem('fresh') === 'quest8'; } catch (e) {}
+      try { tried = sessionStorage.getItem('fresh') === 'quest10'; } catch (e) {}
       if (!ok && !tried) {
-        try { sessionStorage.setItem('fresh', 'quest8'); } catch (e) {}
+        try { sessionStorage.setItem('fresh', 'quest10'); } catch (e) {}
         location.replace(location.pathname + '?fresh=' + Date.now() + location.hash);
       }
     });
@@ -689,10 +715,11 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js" defer></script>
-  <script src="script.js?v=quest8" defer></script>
-  <script src="voxel.js?v=quest8" defer></script>
-  <script src="world3d.js?v=quest8" defer></script>
-  <script src="hero3d.js?v=quest8" defer></script>
-  <script src="game.js?v=quest8" defer></script>
+  <script src="script.js?v=quest10" defer></script>
+  <script src="voxel.js?v=quest10" defer></script>
+  <script src="world3d.js?v=quest10" defer></script>
+  <script src="hero3d.js?v=quest10" defer></script>
+  <script src="game.js?v=quest10" defer></script>
+  <script src="intro.js?v=quest10" defer></script>
 </body>
 </html>

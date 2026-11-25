@@ -152,7 +152,7 @@
     const brows = [-0.115, 0.115].map((x, i) => { const b = rbox(0.12, 0.03, 0.03, browMat, 0.012, false); b.position.set(x, 0.12, 0.245); b.rotation.z = i ? -0.08 : 0.08; return b; });
     const nose = rbox(0.06, 0.09, 0.06, std(0xb87c52, { roughness: 0.55 }), 0.025, false); nose.position.set(0, -0.04, 0.25);
     const mouth = rbox(0.13, 0.025, 0.02, std(0x7a4a34), 0.01, false); mouth.position.set(0, -0.14, 0.242);
-    const beard = rbox(0.4, 0.1, 0.04, std(0x2a1d18, { roughness: 0.9, transparent: true, opacity: 0.55 }), 0.03, false); beard.position.set(0, -0.2, 0.225);
+    const beard = rbox(0.36, 0.06, 0.03, std(0x3a281c, { roughness: 0.95, transparent: true, opacity: 0.3 }), 0.025, false); beard.position.set(0, -0.215, 0.228);
     head.add(face, ...ears, hairTop, hairQuiff, hairBack, hairSideL, hairSideR, ...eyes, ...brows, nose, mouth, beard);
     head.position.y = 1.53;
     hero.add(head);

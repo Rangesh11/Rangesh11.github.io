@@ -22,7 +22,7 @@
   --pixel: "Chakra Petch", "Inter", system-ui, sans-serif;
   --tagf: "Chakra Petch", "Inter", system-ui, sans-serif;
   --hud-h: 64px;
-  --build: quest8;
+  --build: quest10;
   color-scheme: dark;
 }
 
@@ -729,6 +729,74 @@ body {
   a, button, [data-detail], .lvl, .trophy, .w3d-label, .inv__tabs button, .copy-email {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' shape-rendering='crispEdges'%3E%3Cpath d='M3 2v17l4-4 3 7 3-1-3-7h6z' fill='%233ef08a' stroke='%2305040c' stroke-width='2'/%3E%3C/svg%3E") 3 2, pointer;
   }
+}
+
+/* ---------- 1-minute animated intro ---------- */
+.pbtn--video { background: var(--pink); color: #fff; border-color: var(--ink); }
+.photo-play {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 8px 12px; font-family: var(--tagf); font-weight: 700; font-size: .74rem; letter-spacing: .08em; color: #fff;
+  background: rgba(5, 4, 12, .72); border: 2px solid #fff; box-shadow: 3px 3px 0 var(--ink); backdrop-filter: blur(4px);
+}
+.photo-play span { display: grid; place-items: center; width: 22px; height: 22px; background: var(--pink); color: #fff; font-size: .7rem; animation: pulse-play 1.6s ease-in-out infinite; }
+.photo-play:hover { background: var(--pink); }
+@keyframes pulse-play { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--pink) 35%, transparent); } }
+
+.cinema { padding: 0; border: 0; background: transparent; width: min(1100px, calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); overflow: visible; color: var(--text); }
+.cinema::backdrop { background: rgba(3, 2, 8, .86); }
+.cinema[open] { animation: modal-in .3s steps(5); }
+.cinema__frame { background: #0d0b1a; border: 3px solid var(--text); box-shadow: 0 0 0 3px var(--ink), 10px 10px 0 3px var(--ink); }
+.cinema__stage { position: relative; aspect-ratio: 16 / 9; max-height: calc(100dvh - 90px); overflow: hidden; background: #0d0b1a; }
+.cinema__stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
+.cinema__stage--flat { background: center / cover no-repeat url("assets/profile.jpg"); }
+.cinema__stage--flat::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 30%, rgba(5,4,12,.9)); }
+.cinema__chapter {
+  position: absolute; left: 18px; top: 16px; z-index: 2; padding: 5px 10px;
+  font-family: var(--tagf); font-weight: 700; font-size: .74rem; letter-spacing: .1em; color: #0a0816; background: #ffd23f; border: 2px solid #05040c;
+}
+.cinema__title { display: none; }
+.cinema__title--unused {
+  position: absolute; left: 18px; top: 52px; z-index: 2; max-width: 70%;
+  font-family: var(--pixel); font-weight: 700; font-size: clamp(1.2rem, 3.4vw, 2.3rem); line-height: 1.1; color: #f2efff; text-shadow: 3px 3px 0 #8b6cff, 6px 6px 0 #05040c;
+}
+.cinema__cc {
+  position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); width: min(860px, calc(100% - 32px)); text-align: center;
+  padding: 10px 16px; font-size: clamp(.92rem, 2vw, 1.2rem); font-weight: 600; line-height: 1.45; color: #fff; background: rgba(5, 4, 12, .72); border-radius: 4px;
+}
+.cinema__cc[hidden] { display: none; }
+.cinema__chapter.in, .cinema__title.in, .cinema__cc.in { animation: cin-in .5s steps(5); }
+@keyframes cin-in { from { opacity: 0; transform: translateY(10px); } }
+.cinema__cc.in { animation-name: cin-in-cc; }
+@keyframes cin-in-cc { from { opacity: 0; transform: translate(-50%, 10px); } }
+.cinema__cta { position: absolute; right: 5%; top: 50%; z-index: 3; transform: translateY(-60%); display: flex; flex-direction: column; gap: 12px; }
+.cinema__cta[hidden] { display: none; }
+.cinema__big {
+  position: absolute; left: 50%; top: 50%; z-index: 4; transform: translate(-50%, -50%); width: 84px; height: 84px; cursor: pointer;
+  font-size: 2rem; color: #0a0816; background: #3ef08a; border: 3px solid #05040c; box-shadow: 6px 6px 0 #05040c;
+}
+.cinema__big[hidden] { display: none; }
+.cinema__bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #120f24; border-top: 3px solid #3a3170; }
+.cinema__bar button {
+  flex: none; height: 34px; min-width: 34px; padding: 0 10px; cursor: pointer; font-family: var(--tagf); font-weight: 700; font-size: .78rem; letter-spacing: .06em;
+  color: #f2efff; background: #201a40; border: 2px solid #3a3170; box-shadow: 2px 2px 0 #05040c;
+}
+.cinema__bar button:hover { border-color: #ffd23f; }
+.cinema__bar button[aria-pressed="false"] { opacity: .55; }
+#cin-close { background: #ff4d8d; color: #fff; border-color: #05040c; }
+.cinema__progress { flex: 1; display: flex; gap: 4px; min-width: 0; }
+.cinema__seg { position: relative; flex-basis: 0; height: 12px !important; min-width: 0 !important; padding: 0 !important; background: #2b2550 !important; border: 0 !important; box-shadow: none !important; cursor: pointer; overflow: hidden; }
+.cinema__seg i { position: absolute; inset: 0 auto 0 0; width: 0; background: #ffd23f; }
+.cinema__seg.is-on { outline: 2px solid #ffd23f; outline-offset: 1px; }
+.cinema__time { flex: none; font-family: "JetBrains Mono", monospace; font-size: .8rem; color: #a9a3cf; }
+@media (max-width: 640px) {
+  .cinema { width: 100%; }
+  .cinema__bar { flex-wrap: wrap; }
+  .cinema__progress { order: -1; flex-basis: 100%; }
+  .cinema__time { margin-right: auto; }
+  .cinema__title { max-width: 92%; top: 46px; }
+  .cinema__cc { bottom: 8px; padding: 6px 10px; }
+  .cinema__cta { right: 10px; gap: 8px; }
+  .cinema__cta .pbtn { padding: 10px 14px; font-size: .9rem; }
 }
 
 /* ---------- responsive ---------- */
