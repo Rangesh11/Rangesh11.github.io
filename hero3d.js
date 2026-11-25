@@ -18,7 +18,7 @@ const buildHeroWorld = () => {
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ antialias: true }); } catch (e) { return; }
   if (!renderer.getContext()) return;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -397,13 +397,21 @@ const buildHeroWorld = () => {
 
   /* ---------- loop ---------- */
   let visible = false, raf = 0, last = performance.now(), time = 0;
+  const perf = { n: 0, sum: 0, low: false };
   const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
   const v = new THREE.Vector3();
   const bb = new THREE.Box3();
 
   const loop = (now) => {
     raf = 0;
-    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    if (!document.hidden && dt > 0) {
+      perf.n++; perf.sum += dt;
+      if (perf.sum > 2) {
+        if (perf.n / perf.sum < 24 && fx.bloom && !perf.low) { perf.low = true; fx.render = () => renderer.render(scene, camera); renderer.setPixelRatio(1); renderer.shadowMap.enabled = false; }
+        perf.n = 0; perf.sum = 0;
+      }
+    }
     if (!reduce) time += dt;
 
     // packets with trails

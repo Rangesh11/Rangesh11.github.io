@@ -258,7 +258,7 @@ $('#press-start').addEventListener('click', () => { SFX.play('start'); Ach.unloc
   let w, h, stars = [], color = '200,190,255';
   const readColor = () => { color = getComputedStyle(document.documentElement).getPropertyValue('--star').trim() || color; };
   const resize = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = 1;
     w = innerWidth; h = innerHeight;
     c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const n = Math.round((w * h) / 9000);
