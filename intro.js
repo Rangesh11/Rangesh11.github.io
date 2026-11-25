@@ -17,7 +17,7 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- timeline: every line gets its recorded length plus a short pause ---------- */
-  const LINE_GAP = 0.4, SCENE_GAP = 0.9, LEAD_IN = 0.5;
+  const LINE_GAP = 0.18, SCENE_GAP = 0.45, LEAD_IN = 0.25;
   let clock = 0;
   const SCENES = SCRIPT.map((s) => {
     const start = clock;
@@ -448,7 +448,7 @@
     };
 
     const update = (id, st, dur) => {
-      if (id === 'desk') drawScreen(Math.floor(st * 14));
+      if (id === 'desk') drawScreen(Math.floor(st * 20));
       if (id === 'fsm') {
         bars.forEach((b, i) => {
           const f = Math.max(0, Math.min(1, (st - 1 - i * (dur - 3) / 4) / 1.4));
@@ -491,7 +491,7 @@
       if (playing && !reduce) time += dt;
 
       if (cur === 'run' && H.hopT < 1 && H.hopFrom) {
-        H.hopT = Math.min(1, H.hopT + dt / 0.75);
+        H.hopT = Math.min(1, H.hopT + dt / 0.6);
         v.lerpVectors(H.hopFrom, H.hopTo, H.hopT);
         H.x = v.x; H.y = v.y + Math.sin(Math.PI * H.hopT) * 1.3;
         const sw = Math.sin(H.hopT * Math.PI * 4) * 0.7;
@@ -499,7 +499,7 @@
         hero.rotation.y += (Math.PI / 2 - hero.rotation.y) * 0.3;
       } else if (Math.abs(H.tx - H.x) > 0.05 && cur !== 'run') {
         const dir = Math.sign(H.tx - H.x);
-        H.x += dir * Math.min(Math.abs(H.tx - H.x), dt * Math.max(5, Math.abs(H.tx - H.x) * 1.4));
+        H.x += dir * Math.min(Math.abs(H.tx - H.x), dt * Math.max(7, Math.abs(H.tx - H.x) * 2));
         H.y += (0 - H.y) * 0.2;
         const sw = Math.sin(time * 15) * 0.85;
         legL.rotation.x = sw; legR.rotation.x = -sw; armL.rotation.x = -sw; armR.rotation.x = sw;
@@ -535,7 +535,7 @@
       flag.rotation.y = Math.sin(time * 3) * 0.3;
       confetti.forEach((c) => { if (!c.visible) return; c.position.y -= c.userData.v * dt; c.rotation.x += dt * 4; c.rotation.z += dt * 3; if (c.position.y < 0.1) c.position.y = 6 + Math.random() * 3; });
 
-      const k = reduce ? 1 : Math.min(1, dt * 1.8);
+      const k = reduce ? 1 : Math.min(1, dt * 3);
       cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
       cam.lx += (camT.lx - cam.lx) * k; cam.ly += (camT.ly - cam.ly) * k;
       const sway = reduce ? 0 : Math.sin(time * 0.35) * 0.55;

@@ -6,18 +6,18 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "Hi! I'm Rangesh.",
-    "src": "assets/voice/01.mp3?v=prabhat",
-    "dur": 2.04
+    "src": "assets/voice/01.mp3?v=prabhat2",
+    "dur": 1.74
    },
    {
     "cc": "I'm a Project Implementation Engineer at Facilio, and I build software that real businesses run on every day.",
-    "src": "assets/voice/02.mp3?v=prabhat",
-    "dur": 8.3
+    "src": "assets/voice/02.mp3?v=prabhat2",
+    "dur": 7.08
    },
    {
     "cc": "Let me walk you through my story in about two and a half minutes.",
-    "src": "assets/voice/03.mp3?v=prabhat",
-    "dur": 4.29
+    "src": "assets/voice/03.mp3?v=prabhat2",
+    "dur": 3.66
    }
   ]
  },
@@ -27,13 +27,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "I studied Computer Science and Engineering at Sri Eshwar College of Engineering, from 2022 to 2026.",
-    "src": "assets/voice/04.mp3?v=prabhat",
-    "dur": 8.68
+    "src": "assets/voice/04.mp3?v=prabhat2",
+    "dur": 7.41
    },
    {
     "cc": "I finished with a CGPA of 8.49, and kept my problem-solving sharp with more than 350 LeetCode problems.",
-    "src": "assets/voice/05.mp3?v=prabhat",
-    "dur": 10.97
+    "src": "assets/voice/05.mp3?v=prabhat2",
+    "dur": 9.36
    }
   ]
  },
@@ -43,18 +43,18 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "My first real product came during my internship at ThisUX in 2024.",
-    "src": "assets/voice/06.mp3?v=prabhat",
-    "dur": 6.04
+    "src": "assets/voice/06.mp3?v=prabhat2",
+    "dur": 5.16
    },
    {
     "cc": "I designed and built Connect: a MERN social platform where students, alumni and faculty interact in one place.",
-    "src": "assets/voice/07.mp3?v=prabhat",
-    "dur": 9.22
+    "src": "assets/voice/07.mp3?v=prabhat2",
+    "dur": 7.86
    },
    {
     "cc": "I worked across the user interface, the backend APIs and the database.",
-    "src": "assets/voice/08.mp3?v=prabhat",
-    "dur": 6.01
+    "src": "assets/voice/08.mp3?v=prabhat2",
+    "dur": 5.12
    }
   ]
  },
@@ -64,13 +64,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "Today, at Facilio, I build Field Service Management applications on the Facilio platform.",
-    "src": "assets/voice/09.mp3?v=prabhat",
-    "dur": 6.75
+    "src": "assets/voice/09.mp3?v=prabhat2",
+    "dur": 5.76
    },
    {
     "cc": "I write the business logic in FacilioScript, and the screens and widgets in Vue.js.",
-    "src": "assets/voice/10.mp3?v=prabhat",
-    "dur": 6.47
+    "src": "assets/voice/10.mp3?v=prabhat2",
+    "dur": 5.52
    }
   ]
  },
@@ -80,13 +80,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "On one client project, I was the sole owner for eight months.",
-    "src": "assets/voice/11.mp3?v=prabhat",
-    "dur": 4.84
+    "src": "assets/voice/11.mp3?v=prabhat2",
+    "dur": 4.13
    },
    {
     "cc": "I analysed the client's needs, wrote the BRD and solution documents, and delivered the customisation phase by phase, until every phase was done.",
-    "src": "assets/voice/12.mp3?v=prabhat",
-    "dur": 11.14
+    "src": "assets/voice/12.mp3?v=prabhat2",
+    "dur": 9.51
    }
   ]
  },
@@ -96,28 +96,28 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "That's how I work on every project: one owner, end to end.",
-    "src": "assets/voice/13.mp3?v=prabhat",
-    "dur": 5.79
+    "src": "assets/voice/13.mp3?v=prabhat2",
+    "dur": 4.95
    },
    {
     "cc": "I start with requirement calls, to map how the client's team really works.",
-    "src": "assets/voice/14.mp3?v=prabhat",
-    "dur": 5.16
+    "src": "assets/voice/14.mp3?v=prabhat2",
+    "dur": 4.4
    },
    {
     "cc": "I design the solution in a BRD, agreed with the client, then build it.",
-    "src": "assets/voice/15.mp3?v=prabhat",
-    "dur": 6.47
+    "src": "assets/voice/15.mp3?v=prabhat2",
+    "dur": 5.52
    },
    {
     "cc": "I test every flow and edge case, and support the client through go-live.",
-    "src": "assets/voice/16.mp3?v=prabhat",
-    "dur": 6.15
+    "src": "assets/voice/16.mp3?v=prabhat2",
+    "dur": 5.25
    },
    {
     "cc": "One owner. Zero handoffs.",
-    "src": "assets/voice/17.mp3?v=prabhat",
-    "dur": 3.11
+    "src": "assets/voice/17.mp3?v=prabhat2",
+    "dur": 2.65
    }
   ]
  },
@@ -127,18 +127,18 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "One of my favourite builds is a two-way sync between Xero and the Facilio platform.",
-    "src": "assets/voice/18.mp3?v=prabhat",
-    "dur": 6.13
+    "src": "assets/voice/18.mp3?v=prabhat2",
+    "dur": 5.24
    },
    {
     "cc": "It maps fields between both systems, runs on a schedule and on events, and handles failed and duplicate records.",
-    "src": "assets/voice/19.mp3?v=prabhat",
-    "dur": 8.7
+    "src": "assets/voice/19.mp3?v=prabhat2",
+    "dur": 7.43
    },
    {
     "cc": "So the client's finance and operations data always match.",
-    "src": "assets/voice/20.mp3?v=prabhat",
-    "dur": 4.48
+    "src": "assets/voice/20.mp3?v=prabhat2",
+    "dur": 3.83
    }
   ]
  },
@@ -148,18 +148,18 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "I also built an ETL platform for Vanij.",
-    "src": "assets/voice/21.mp3?v=prabhat",
-    "dur": 3.84
+    "src": "assets/voice/21.mp3?v=prabhat2",
+    "dur": 3.28
    },
    {
     "cc": "Airbyte runs in Docker on a dedicated server, and my Go API sits on top of it.",
-    "src": "assets/voice/22.mp3?v=prabhat",
-    "dur": 6.73
+    "src": "assets/voice/22.mp3?v=prabhat2",
+    "dur": 5.76
    },
    {
     "cc": "Users connect a source, choose their data and sync it to a destination, without ever touching Airbyte.",
-    "src": "assets/voice/23.mp3?v=prabhat",
-    "dur": 7.56
+    "src": "assets/voice/23.mp3?v=prabhat2",
+    "dur": 6.46
    }
   ]
  },
@@ -169,13 +169,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "My toolkit: FacilioScript and the Facilio platform, Go, Vue.js, React and Node.",
-    "src": "assets/voice/24.mp3?v=prabhat",
-    "dur": 7.81
+    "src": "assets/voice/24.mp3?v=prabhat2",
+    "dur": 6.67
    },
    {
     "cc": "Plus Python, Java, SQL and MongoDB, with Docker, REST APIs and Claude automation to move faster.",
-    "src": "assets/voice/25.mp3?v=prabhat",
-    "dur": 9.93
+    "src": "assets/voice/25.mp3?v=prabhat2",
+    "dur": 8.48
    }
   ]
  },
@@ -185,13 +185,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "Along the way, I've won first place at project expos and paper presentations.",
-    "src": "assets/voice/26.mp3?v=prabhat",
-    "dur": 6.24
+    "src": "assets/voice/26.mp3?v=prabhat2",
+    "dur": 5.34
    },
    {
     "cc": "I hold a LeetCode rating above 1650, and certifications in Java and C++.",
-    "src": "assets/voice/27.mp3?v=prabhat",
-    "dur": 7.56
+    "src": "assets/voice/27.mp3?v=prabhat2",
+    "dur": 6.45
    }
   ]
  },
@@ -201,18 +201,18 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "So what do you get when you work with me?",
-    "src": "assets/voice/28.mp3?v=prabhat",
-    "dur": 3.26
+    "src": "assets/voice/28.mp3?v=prabhat2",
+    "dur": 2.79
    },
    {
     "cc": "One person who understands your business and writes the code.",
-    "src": "assets/voice/29.mp3?v=prabhat",
-    "dur": 4.5
+    "src": "assets/voice/29.mp3?v=prabhat2",
+    "dur": 3.84
    },
    {
     "cc": "Clear documents, and someone who stays with the project all the way to go-live.",
-    "src": "assets/voice/30.mp3?v=prabhat",
-    "dur": 5.89
+    "src": "assets/voice/30.mp3?v=prabhat2",
+    "dur": 5.05
    }
   ]
  },
@@ -222,13 +222,13 @@ window.INTRO_SCRIPT = [
   "lines": [
    {
     "cc": "Need someone to own your next project, from the first call to go-live? Let's talk.",
-    "src": "assets/voice/31.mp3?v=prabhat",
-    "dur": 5.99
+    "src": "assets/voice/31.mp3?v=prabhat2",
+    "dur": 5.12
    },
    {
     "cc": "Thanks for watching!",
-    "src": "assets/voice/32.mp3?v=prabhat",
-    "dur": 1.22
+    "src": "assets/voice/32.mp3?v=prabhat2",
+    "dur": 1.03
    }
   ]
  }
