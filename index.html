@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=quest11" />
+  <link rel="stylesheet" href="styles.css?v=quest12" />
   <script>
     // Apply the saved theme before first paint so there is no flash.
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -83,7 +83,7 @@
           <p class="lead"><strong class="hl">One owner. End to end.</strong> I take client projects from the first call to go-live — integrations, data pipelines, full-stack apps.</p>
           <div class="cta-row">
             <a href="#run" class="pbtn pbtn--start" id="press-start">▶ PRESS START</a>
-            <button type="button" class="pbtn pbtn--video" data-intro>🎬 WATCH MY STORY · 3 MIN</button>
+            <button type="button" class="pbtn pbtn--video" data-intro>🎬 WATCH MY STORY · 4 MIN</button>
             <a href="assets/Rangesh_S_Resume.pdf" class="pbtn pbtn--ghost" download>⤓ RÉSUMÉ.PDF</a>
           </div>
           <div class="socials-row" data-socials="labeled"></div>
@@ -699,11 +699,11 @@
   <script>
     // If the browser mixed an old cached stylesheet with this page, reload once with fresh files.
     window.addEventListener('load', function () {
-      var ok = getComputedStyle(document.documentElement).getPropertyValue('--build').trim() === 'quest11';
+      var ok = getComputedStyle(document.documentElement).getPropertyValue('--build').trim() === 'quest12';
       var tried = false;
-      try { tried = sessionStorage.getItem('fresh') === 'quest11'; } catch (e) {}
+      try { tried = sessionStorage.getItem('fresh') === 'quest12'; } catch (e) {}
       if (!ok && !tried) {
-        try { sessionStorage.setItem('fresh', 'quest11'); } catch (e) {}
+        try { sessionStorage.setItem('fresh', 'quest12'); } catch (e) {}
         location.replace(location.pathname + '?fresh=' + Date.now() + location.hash);
       }
     });
@@ -715,12 +715,12 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js" defer></script>
-  <script src="script.js?v=quest11" defer></script>
-  <script src="voxel.js?v=quest11" defer></script>
-  <script src="world3d.js?v=quest11" defer></script>
-  <script src="hero3d.js?v=quest11" defer></script>
-  <script src="game.js?v=quest11" defer></script>
-  <script src="assets/voice/script.js?v=quest11" defer></script>
-  <script src="intro.js?v=quest11" defer></script>
+  <script src="script.js?v=quest12" defer></script>
+  <script src="voxel.js?v=quest12" defer></script>
+  <script src="world3d.js?v=quest12" defer></script>
+  <script src="hero3d.js?v=quest12" defer></script>
+  <script src="game.js?v=quest12" defer></script>
+  <script src="assets/voice/script.js?v=quest12" defer></script>
+  <script src="intro.js?v=quest12" defer></script>
 </body>
 </html>
